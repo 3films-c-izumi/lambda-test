@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Laravel 12 on Lambda using SAM + Bref
+
+Resources:
+  LaravelFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: public/index.php
+      Runtime: provided.al2
+      MemorySize: 1024
+      Timeout: 28
+      Layers:
+        - arn:aws:lambda:ap-northeast-1:534081306603:layer:php-84-fpm:30
+      Events:
+        HttpApi:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
