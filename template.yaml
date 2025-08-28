@@ -18,3 +18,5 @@ Resources:
           Properties:
             Path: /{proxy+}
             Method: ANY
+            Metadata:
+            BuildMethod: provided.al2
